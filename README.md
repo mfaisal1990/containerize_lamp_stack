@@ -13,3 +13,44 @@ The term **LAMP** is an acronym representing the following software components:
 - *MySQL* or *MariaDB* – Database Management System
 - *PHP* – Programming Language
 
+## ✨ Features
+🔧 Fully Dockerized LAMP Stack
+Runs Apache, MySQL, and PHP services with isolated containers using Docker Compose.
+
+🗃️ Auto-Initialized MySQL Database
+Creates a testdb database and a users table with demo user data on first launch.
+
+💻 PHP Frontend with MySQL Integration
+A simple PHP script connects to MySQL and displays user data in a styled HTML table.
+
+🎨 Basic CSS Styling
+Custom style.css file adds a clean, modern UI to your PHP app.
+
+🛠️ Apache with Custom Config
+Apache is configured to support .htaccess and mod_rewrite for cleaner routing.
+
+🧮 phpMyAdmin Included
+Web-based interface to manage the MySQL database visually.
+
+## 💻 Tech Stack
+| Technology           | Description               |
+| ------------------- | ------------------------ |
+| 🐳 Docker Compose | Defining and running multi-container Docker applications |
+| 🐧 Linux | Lightweight Linux base image used in all containers |
+| 🌐 Apache 2       | Serves PHP content and handles HTTP requests |
+| 🛢️ MySQL 8.0        | Stores application data |
+| 🐘 PHP 8.2          | Handles server-side logic and database interaction |
+| 🧭 phpMyAdmin         | Web-based interface to manage MySQL databases |
+
+## 🗂️ Project Structure
+<img width="530" height="431" alt="image" src="https://github.com/user-attachments/assets/8967407f-3c25-4a21-9935-fb6d0c6f8731" />
+
+- apache-config.conf --> Custom Apache virtual host config
+- docker-compose.yaml --> Defines services: web, mysql, phpMyAdmin
+- Dockerfile --> Builds the Apache + PHP container
+- init.sql --> SQL script to initialize MySQL database
+- index.php --> Main PHP page displaying data from DB
+- style.css --> Basic CSS for frontend styling
+- README.md --> Project documentation
+
+## 🚀 Deployment Steps
