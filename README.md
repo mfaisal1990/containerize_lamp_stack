@@ -54,3 +54,62 @@ Web-based interface to manage the MySQL database visually.
 - README.md --> Project documentation
 
 ## 🚀 Deployment Steps
+
+#### Folders
+<img width="920" height="163" alt="image" src="https://github.com/user-attachments/assets/b4e947fe-1418-4d8f-aa67-1150f743246b" />
+
+#### Dockerfile
+```
+FROM php:8.2-apache
+
+# Install mysqli extension
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Copy custom Apache config
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Copy PHP files
+COPY php/ /var/www/html/
+```
+
+#### docker-compose.yaml
+```
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    volumes:
+      - ./php:/var/www/html
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
+```
+
