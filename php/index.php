@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP MySQL User List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
 <?php
 $servername = "mysql"; // service name in docker-compose
 $username = "root";
@@ -33,3 +43,7 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
+
+</body>
+</html>

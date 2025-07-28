@@ -6,5 +6,8 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Copy PHP files into Apache's web directory
+# Copy custom Apache config
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Copy PHP files
 COPY php/ /var/www/html/
