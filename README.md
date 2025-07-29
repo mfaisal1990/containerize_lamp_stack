@@ -113,3 +113,46 @@ volumes:
   mysql-data:
 ```
 
+#### docker compose up
+```
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker compose up
+WARN[0000] /home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+[+] Running 4/4
+ ✔ Network project_dockerize_lamp_stack_default         Created                                                                                                                         0.1s
+ ✔ Container project_dockerize_lamp_stack-mysql-1       Created                                                                                                                         0.1s
+ ✔ Container project_dockerize_lamp_stack-phpmyadmin-1  Created                                                                                                                         0.1s
+ ✔ Container project_dockerize_lamp_stack-web-1         Created                                                                                                                         0.1s
+Attaching to mysql-1, phpmyadmin-1, web-1
+```
+
+#### Output of docker ps and volume, networks
+```
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker ps
+CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+c7e929b1097e   phpmyadmin/phpmyadmin              "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   project_dockerize_lamp_stack-phpmyadmin-1
+b9b01d4fa3d5   project_dockerize_lamp_stack-web   "docker-php-entrypoi…"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   project_dockerize_lamp_stack-web-1
+4b4b108dc984   mysql:8.0                          "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   3306/tcp, 33060/tcp                       project_dockerize_lamp_stack-mysql-1
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack#
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker volume ls
+DRIVER    VOLUME NAME
+local     project_dockerize_lamp_stack_mysql-data
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack#
+root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker network ls
+NETWORK ID     NAME                                   DRIVER    SCOPE
+ba295dfcd6fc   bridge                                 bridge    local
+9dab91426272   host                                   host      local
+4e936865fe08   none                                   null      local
+ee7cb299c324   project_dockerize_lamp_stack_default   bridge    local
+```
+
+#### Output on Browser
+<img width="1142" height="478" alt="image" src="https://github.com/user-attachments/assets/c6824dae-3046-457d-81bb-d961dda36b04" />
+
+#### phpMyAdmin on Browser
+<img width="1366" height="675" alt="image" src="https://github.com/user-attachments/assets/367a4a8c-f1a9-43f1-8f8e-604d2387b929" />
+
+#### Adding a row via phpMyAdmin
+<img width="846" height="158" alt="image" src="https://github.com/user-attachments/assets/92b4a4ef-7215-489d-af08-40738db31c13" />
+
+#### Refreshing the Browser
+<img width="1162" height="533" alt="image" src="https://github.com/user-attachments/assets/b4209cf2-cef0-4f47-a732-0b74c8f1e5e4" />
