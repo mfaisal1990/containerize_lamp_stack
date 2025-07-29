@@ -55,10 +55,10 @@ Web-based interface to manage the MySQL database visually.
 
 ## 🚀 Deployment Steps
 
-#### Folders
+#### Create directories and files:
 <img width="920" height="163" alt="image" src="https://github.com/user-attachments/assets/b4e947fe-1418-4d8f-aa67-1150f743246b" />
 
-#### Dockerfile
+#### Dockerfile:
 ```
 FROM php:8.2-apache
 
@@ -75,7 +75,7 @@ COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 COPY php/ /var/www/html/
 ```
 
-#### docker-compose.yaml
+#### docker-compose.yaml:
 ```
 services:
   web:
@@ -113,7 +113,7 @@ volumes:
   mysql-data:
 ```
 
-#### docker compose up
+#### Spinning up the containers:
 ```
 root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker compose up
 WARN[0000] /home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
@@ -125,7 +125,12 @@ WARN[0000] /home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack/docker-
 Attaching to mysql-1, phpmyadmin-1, web-1
 ```
 
-#### Output of docker ps and volume, networks
+Three containers will be spun up:
+- **web-1** Runs Apache & PHP 8.2, serves the web application, and handles all incoming HTTP requests.
+- **mysql-1**	Provides the MySQL database, automatically initializes the testdb database and a users table using init.sql. 
+- **phpmyadmin-1** A web-based UI to interact with the MySQL database.
+
+#### Output of docker ps and volume, network:
 ```
 root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker ps
 CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                                     NAMES
@@ -139,20 +144,23 @@ local     project_dockerize_lamp_stack_mysql-data
 root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack#
 root@ip-172-31-27-61:/home/ubuntu/myDocker/lamp_stack/project_dockerize_lamp_stack# docker network ls
 NETWORK ID     NAME                                   DRIVER    SCOPE
-ba295dfcd6fc   bridge                                 bridge    local
-9dab91426272   host                                   host      local
-4e936865fe08   none                                   null      local
 ee7cb299c324   project_dockerize_lamp_stack_default   bridge    local
 ```
+- App running at: http://host-ip:8080
+- phpMyAdmin available at: http://host-ip:8081
 
-#### Output on Browser
+## Output:
+When I ran **docker compose up** command, three containers will will be spun up: web-1, mysql-1, and phpmyadmin-1. The web container runs the PHP app with Apache. The MySQL container sets up the database and adds some sample data. phpMyAdmin is also available to manage the database from the browser. The app can be opened at http://host-ip:8080 and phpMyAdmin at http://host-ip:8081.
+Note: Since my host-ip is an AWS instance, so IP can be variable hence I mentioned as **host-ip**
+
+#### Webpage on Port 8080:
 <img width="1142" height="478" alt="image" src="https://github.com/user-attachments/assets/c6824dae-3046-457d-81bb-d961dda36b04" />
 
-#### phpMyAdmin on Browser
+#### phpMyAdmin on Browser Port 8081:
 <img width="1366" height="675" alt="image" src="https://github.com/user-attachments/assets/367a4a8c-f1a9-43f1-8f8e-604d2387b929" />
 
-#### Adding a row via phpMyAdmin
+#### Adding a new row via phpMyAdmin:
 <img width="846" height="158" alt="image" src="https://github.com/user-attachments/assets/92b4a4ef-7215-489d-af08-40738db31c13" />
 
-#### Refreshing the Browser
+#### Refreshing the Browser:
 <img width="1162" height="533" alt="image" src="https://github.com/user-attachments/assets/b4209cf2-cef0-4f47-a732-0b74c8f1e5e4" />
