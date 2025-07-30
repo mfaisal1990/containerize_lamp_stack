@@ -149,7 +149,7 @@ ee7cb299c324   project_dockerize_lamp_stack_default   bridge    local
 - App running at: http://host-ip:8080
 - phpMyAdmin available at: http://host-ip:8081
 
-## Output:
+## 📦 Output:
 When I ran **docker compose up** command, three containers will will be spun up: web-1, mysql-1, and phpmyadmin-1. The web container runs the PHP app with Apache. The MySQL container sets up the database and adds some sample data. phpMyAdmin is also available to manage the database from the browser. The app can be opened at http://host-ip:8080 and phpMyAdmin at http://host-ip:8081.
 Note: Since my host-ip is an AWS instance, so IP can be variable hence I mentioned as **host-ip**
 
