@@ -14,23 +14,12 @@ The term **LAMP** is an acronym representing the following software components:
 - *PHP* – Programming Language
 
 ## ✨ Features
-🔧 Fully Dockerized LAMP Stack
-Runs Apache, MySQL, and PHP services with isolated containers using Docker Compose.
-
-🗃️ Auto-Initialized MySQL Database
-Creates a testdb database and a users table with demo user data on first launch.
-
-💻 PHP Frontend with MySQL Integration
-A simple PHP script connects to MySQL and displays user data in a styled HTML table.
-
-🎨 Basic CSS Styling
-Custom style.css file adds a clean, modern UI to your PHP app.
-
-🛠️ Apache with Custom Config
-Apache is configured to support .htaccess and mod_rewrite for cleaner routing.
-
-🧮 phpMyAdmin Included
-Web-based interface to manage the MySQL database visually.
+- 🔧 **Fully Dockerized LAMP Stack** - Runs Apache, MySQL, and PHP services with isolated containers using Docker Compose.
+- 🗃️ **Auto-Initialized MySQL Database** - Creates a testdb database and a users table with demo user data on first launch.
+- 💻 **PHP Frontend with MySQL Integration** - A simple PHP script connects to MySQL and displays user data in a styled HTML table.
+- 🎨 **Basic CSS Styling** - Custom style.css file adds a clean, modern UI to your PHP app.
+- 🛠️ **Apache with Custom Config** - Apache is configured to support .htaccess and mod_rewrite for cleaner routing.
+- 🧮 **phpMyAdmin Included** - Web-based interface to manage the MySQL database visually.
 
 ## 💻 Tech Stack
 | Technology           | Description               |
